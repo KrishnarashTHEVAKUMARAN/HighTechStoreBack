@@ -33,14 +33,14 @@ public class PcPortableController {
     }
 
     @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<PcPortable> addUsers(@RequestBody PcPortable users){
-        PcPortable newPcPortables = pcPortableService.addPcPortable(users);
+    public ResponseEntity<PcPortable> addUsers(@RequestBody PcPortable pcPortable){
+        PcPortable newPcPortables = pcPortableService.addPcPortable(pcPortable);
         return new ResponseEntity<>(newPcPortables, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PcPortable> updateUsers(@RequestBody PcPortable users){
-        PcPortable updatePcPortables = pcPortableService.updatePcPortable(users);
+    public ResponseEntity<PcPortable> updateUsers(@RequestBody PcPortable pcPortable){
+        PcPortable updatePcPortables = pcPortableService.updatePcPortable(pcPortable);
         return new ResponseEntity<>(updatePcPortables, HttpStatus.OK);
     }
 
