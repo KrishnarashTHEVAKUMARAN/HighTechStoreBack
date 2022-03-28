@@ -1,9 +1,7 @@
 package com.example.HighTechStores.controller;
 
 import com.example.HighTechStores.model.PcBureau;
-import com.example.HighTechStores.model.PcPortable;
 import com.example.HighTechStores.service.PcBureauService;
-import com.example.HighTechStores.service.PcPortableService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,31 +20,31 @@ public class PcBureauController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<PcBureau>> getAllUsers(){
+    public ResponseEntity<List<PcBureau>> getAllPcBureau(){
         List<PcBureau> pcBureau = pcBureauService.findAllPcBureau();
         return new ResponseEntity<>(pcBureau, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<PcBureau> getUsersById(@PathVariable("id") Long id){
+    public ResponseEntity<PcBureau> getPcBureauById(@PathVariable("id") Long id){
         PcBureau pcBureau = pcBureauService.findPcBureauById(id);
         return new ResponseEntity<>(pcBureau, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<PcBureau> addUsers(@RequestBody PcBureau pcBureau){
+    public ResponseEntity<PcBureau> addPcBureau(@RequestBody PcBureau pcBureau){
         PcBureau newPcBureau = pcBureauService.addPcBureau(pcBureau);
         return new ResponseEntity<>(newPcBureau, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PcBureau> updateUsers(@RequestBody PcBureau pcBureau){
+    public ResponseEntity<PcBureau> updatePcBureau(@RequestBody PcBureau pcBureau){
         PcBureau updatePcBureau = pcBureauService.updatePcBureau(pcBureau);
         return new ResponseEntity<>(updatePcBureau, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<PcBureau> deleteUsers(@PathVariable("id") Long id){
+    public ResponseEntity<PcBureau> deletePcBureau(@PathVariable("id") Long id){
         pcBureauService.deletePcBureau(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

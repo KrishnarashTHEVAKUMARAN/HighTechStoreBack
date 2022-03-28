@@ -21,31 +21,31 @@ public class PcPortableController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<PcPortable>> getAllUsers(){
+    public ResponseEntity<List<PcPortable>> getAllPcPortable(){
         List<PcPortable> pcPortables = pcPortableService.findAllPcPortable();
         return new ResponseEntity<>(pcPortables, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<PcPortable> getUsersById(@PathVariable("id") Long id){
+    public ResponseEntity<PcPortable> getPcPortableById(@PathVariable("id") Long id){
         PcPortable pcPortables = pcPortableService.findPcPortableById(id);
         return new ResponseEntity<>(pcPortables, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<PcPortable> addUsers(@RequestBody PcPortable pcPortable){
+    public ResponseEntity<PcPortable> addPcPortable(@RequestBody PcPortable pcPortable){
         PcPortable newPcPortables = pcPortableService.addPcPortable(pcPortable);
         return new ResponseEntity<>(newPcPortables, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<PcPortable> updateUsers(@RequestBody PcPortable pcPortable){
+    public ResponseEntity<PcPortable> updatePcPortable(@RequestBody PcPortable pcPortable){
         PcPortable updatePcPortables = pcPortableService.updatePcPortable(pcPortable);
         return new ResponseEntity<>(updatePcPortables, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<PcPortable> deleteUsers(@PathVariable("id") Long id){
+    public ResponseEntity<PcPortable> deletePcPortable(@PathVariable("id") Long id){
         pcPortableService.deletePcPortable(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
