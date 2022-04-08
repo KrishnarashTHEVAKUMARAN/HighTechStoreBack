@@ -31,6 +31,15 @@ public class UsersController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Users> login(@RequestBody Users users){
+        Users user = usersService.findUsersByEmail(users.getEmail());
+        if(user.getPassword().equals(users.getPassword())){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return (ResponseEntity<Users>) ResponseEntity.internalServerError();
+    }
+
     @PostMapping(value = "/add", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Users> addUsers(@RequestBody Users users){
         Users newUsers = usersService.addUsers(users);

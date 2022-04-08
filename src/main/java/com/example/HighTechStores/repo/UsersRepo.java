@@ -9,4 +9,6 @@ public interface UsersRepo extends JpaRepository<Users,Long> {
     void deleteUsersById(Long id);
 
     Optional<Users> findUsersById(Long id);
+
+    Optional<Users> findUsersByEmail(String email);
 }

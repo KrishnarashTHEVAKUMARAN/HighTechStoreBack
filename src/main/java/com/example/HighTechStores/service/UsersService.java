@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 public class UsersService {
     private final UsersRepo usersRepo;
@@ -31,6 +33,11 @@ public class UsersService {
 
     public Users findUsersById(Long id){
         return usersRepo.findUsersById(id)
+                .orElseThrow(() -> new UserNotFoundException("Users by id " + id + "was not found"));
+    }
+
+    public Users findUsersByEmail(String email){
+        return usersRepo.findUsersByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("Users by id " + id + "was not found"));
     }
 
